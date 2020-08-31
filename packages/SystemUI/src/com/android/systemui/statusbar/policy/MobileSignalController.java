@@ -111,9 +111,7 @@ public class MobileSignalController extends SignalController<
     private ImsManager.Connector mImsManagerConnector;
     private int mCallState = TelephonyManager.CALL_STATE_IDLE;
 
-    private boolean mShow4gForLte;
     private int mVoLTEstyle;
-    private boolean mDataDisabledIcon;
 
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
@@ -197,7 +195,6 @@ public class MobileSignalController extends SignalController<
                     Settings.System.getUriFor(Settings.System.SHOW_FOURG_ICON), false,
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(
-<<<<<<< HEAD
                     Settings.System.getUriFor(Settings.System.USE_OLD_MOBILETYPE), false,
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(
@@ -434,8 +431,6 @@ public class MobileSignalController extends SignalController<
 
         if ( (mCurrentState.voiceCapable || mCurrentState.videoCapable)
                 &&  mCurrentState.imsRegistered && mVoLTEicon ) {
-            resId = R.drawable.ic_volte;
-        if (mCurrentState.isVolteRegistered && mVoLTEicon) {
             switch(mVoLTEstyle) {
                 // VoLTE
                 case 1:
@@ -449,7 +444,7 @@ public class MobileSignalController extends SignalController<
                 case 3:
                     resId = R.drawable.ic_hd_volte;
                     break;
- 	        //Vo
+ 	        //Default Icon
                 case 0:
                 default:
                     resId = R.drawable.ic_volte;
